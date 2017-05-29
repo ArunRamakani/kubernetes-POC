@@ -1,0 +1,35 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: purchase
+  labels:
+    app: purchase
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: purchase
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: purchase
+    spec:
+      containers:
+      - image: arunramakani/purchase
+        name: purchase
+        env:
+        - name: DATABASE_HOST
+          value: mysql
+        ports:
+        - containerPort: 8081
+          protocol: TCP
+      - image: arunramakani/bid_close_job
+        name: bidclosejob
+        env:
+        - name: inventory_HOST
+          value: inventory
+        ports:
+        - containerPort: 8082
+          protocol: TCP
