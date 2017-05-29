@@ -30,5 +30,32 @@
 
 
 	####################################
+	
+#  Setup microservices 
+
+
+	kubectl create -f inventoryPod.yaml 
+	
+	kubectl create -f purchasePod.yaml
+	
+	kubectl create -f inventoryService.yaml 
+	
+	kubectl create -f purchaseService.yaml
+
+
+	#####################################
+
+	For Clean up 
+
+	kubectl delete deployment inventory
+	
+	kubectl delete deployment purchase
+	
+	kubectl delete service inventory
+	
+	kubectl delete service purchase
+	
+
+	####################################
 
 
