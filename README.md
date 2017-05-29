@@ -59,3 +59,7 @@
 	####################################
 
 
+
+Sample port forward to test
+
+kubectl port-forward inventory-4009674895-whcvl 8080:8080
